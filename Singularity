@@ -6,7 +6,7 @@ From: ubuntu:18.04
 %labels
   Maintainer @jacobhepkema
   Version v0.3
-  
+
 %post
   # Install prerequisites
   apt-get update && apt-get install -y procps libopenmpi-dev openmpi-bin ghostscript libgs-dev libgd-dev libexpat1-dev zlib1g-dev libxml2-dev autoconf automake libtool libhtml-template-compiled-perl libxml-opml-simplegen-perl libxml-libxml-debugging-perl sudo curl openssh-server git
@@ -27,7 +27,8 @@ From: ubuntu:18.04
   
   mkdir /opt/meme
   # Get custom meme suite
-  cd /opt/meme && git clone https://github.com/jacobhepkema/memesuite.git && cd /opt/meme/memesuite && ./configure --prefix=/opt  --enable-build-libxml2 --enable-build-libxslt  --with-url=http://meme-suite.org && make && make install && rm -rfv /opt/meme
+  cd /opt/meme && git clone https://github.com/jacobhepkema/memesuite.git 
+  cd /opt/meme/memesuite && autoreconf -f -i && ./configure --prefix=/opt  --enable-build-libxml2 --enable-build-libxslt  --with-url=http://meme-suite.org && make && make install && rm -rfv /opt/meme
   
   export PATH=/opt/bin:$PATH
   
